@@ -145,6 +145,12 @@ Build
 * GITHUB#14808: Add support for validating sources using ast-grep tool rules #14808
   (Robert Muir, Dawid Weiss)
 
+* GITHUB#15629: Introduce prek for fast pre-commit/repository checks.
+  Markdown files are now linted with local broken-link detection.
+  Python and Shell scripts are now linted system-wide.
+  Install with `uvx prek install`
+  For more see help/precommit.txt or `./gradlew helpPrecommit` (Robert Muir)
+
 Other
 ---------------------
 
@@ -181,7 +187,6 @@ Improvements
 
 Optimizations
 ---------------------
-
 * GITHUB#15637: Lazily allocate ByteArrayDataInputs in SegmentTermsEnumFrame#15637 (Misha Dmitriev)
 
 Bug Fixes
@@ -358,8 +363,18 @@ Optimizations
 
 * GITHUB#15585: Added shared prefetch counter to maintain count across clones and slices of MemorySegmentIndexInput. (Shubham Sharma)
 
+* GITHUB#15632: Use a coarser-grained competitive iterator with lower construction costs for
+  numeric sorts against fields with DocValuesSkippers. (Alan Woodward)
+
+* GITHUB#15607: Utilize bulk scoring for diversity checking when building HNSW vector indices. This results
+  in some performance improvements during indexing and segment merges. (Ben Trent)
+
 Bug Fixes
 ---------------------
+* GITHUB#15442: Preserve boost values when merging overlapping phrases in
+  FastVectorHighlighter so highlight scoring fully reflects query boosts.
+  (Yang Feng)
+
 * GITHUB#14161: PointInSetQuery's constructor now throws IllegalArgumentException
   instead of UnsupportedOperationException when values are out of order. (Shubham Sharma)
 
@@ -383,6 +398,12 @@ Bug Fixes
 * GITHUB#15523: Updating createMultiSegmentIndex to utilize an explicit NoMergePolicy (Bryce Kane)
 
 * GITHUB#14616 : Fix mis-interpretation of `maxNumBytes` in FuzzySet#createSetBasedOnMaxMemory (Greg Miller)
+
+* GITHUB#15554: Fix tessellator failure by preferring the shared vertex that is the leftmost vertex of the hole
+  (Ignacio Vera)
+
+* GITHUB#15553: Fix MergedByteVectorValues lastOrd behavior to enable partitioning of vector values
+(Finn Roblin, Dooyong Kim)
 
 Other
 ---------------------
