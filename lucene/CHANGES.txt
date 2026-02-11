@@ -326,6 +326,8 @@ Optimizations
 
 * GITHUB#15592: Optimize DocIdSetIteratorAcceptDocs#cost. (Shubham Chaudhary)
 
+* GITHUB#15637: Lazily allocate ByteArrayDataInputs in SegmentTermsEnumFrame. (Misha Dmitriev)
+
 Bug Fixes
 ---------------------
 * GITHUB#14161: PointInSetQuery's constructor now throws IllegalArgumentException
